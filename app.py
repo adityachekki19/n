@@ -37,7 +37,7 @@ if not st.session_state.logged_in:
 # PAGE SETUP
 # ===============================
 st.set_page_config(page_title="MCQ Dashboard", layout="wide")
-st.title("📊 MCQ Quiz Analytics Dashboard")
+st.title(" MCQ Quiz Analytics Dashboard")
 
 st.write("This dashboard analyzes student performance in MCQ quizzes, including scores, rankings, and insights.")
 st.markdown("---")
