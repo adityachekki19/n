@@ -15,7 +15,7 @@ if "logged_in" not in st.session_state:
 
 if not st.session_state.logged_in:
 
-    st.subheader("🔐 Login")
+    st.subheader(" Login")
 
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
@@ -24,11 +24,11 @@ if not st.session_state.logged_in:
 
         if username == "admin" and password == "1234":
             st.session_state.logged_in = True
-            st.success("✅ Login Successful")
+            st.success("Login Successful")
             st.rerun()
 
         else:
-            st.error("❌ Invalid Credentials")
+            st.error(" Invalid Credentials")
 
     st.stop()
 
@@ -45,7 +45,7 @@ st.markdown("---")
 # ===============================
 # LOAD DATA
 # ===============================
-uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
+uploaded_file = st.file_uploader(" Upload your CSV file", type=["csv"])
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
@@ -54,10 +54,10 @@ if uploaded_file is not None:
         df = df.iloc[:, 0].str.split(",", expand=True)
         df.columns = ["NAME","COLLEGE","DEPARTMENT","Q1","Q2","Q3","Q4","Q5"]
 
-    st.success("✅ File Uploaded Successfully")
+    st.success(" File Uploaded Successfully")
 
 else:
-    st.warning("⚠ Please upload a CSV file to continue")
+    st.warning("Please upload a CSV file to continue")
     st.stop()
 
 # ===============================
@@ -70,7 +70,7 @@ df.fillna("Not Answered", inplace=True)
 # ===============================
 # FILTERS
 # ===============================
-st.sidebar.title("📊 Filters")
+st.sidebar.title(" Filters")
 
 selected_dept = st.sidebar.selectbox(
     "Department",
@@ -167,7 +167,7 @@ else:
 # ===============================
 # OVERALL STATS
 # ===============================
-st.subheader("📌 Overall Statistics")
+st.subheader(" Overall Statistics")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -182,7 +182,7 @@ st.markdown("---")
 # ===============================
 # SCORE DISTRIBUTION
 # ===============================
-st.subheader("📊 Score Distribution")
+st.subheader(" Score Distribution")
 
 fig1 = plt.figure(figsize=(5,3))
 
@@ -196,7 +196,7 @@ st.pyplot(fig1)
 # ===============================
 # PASS VS FAIL
 # ===============================
-st.subheader("✅ Pass vs Fail")
+st.subheader("Pass vs Fail")
 
 result_counts = df["RESULT"].value_counts()
 
@@ -213,7 +213,7 @@ plt.title("Pass vs Fail Distribution")
 st.pyplot(fig_pf)
 # DEPARTMENT PERFORMANCE
 # ===============================
-st.subheader("🏢 Department Performance")
+st.subheader(" Department Performance")
 
 dept_perf = df.groupby("DEPARTMENT")["SCORE"].mean()
 
@@ -233,7 +233,7 @@ else:
     st.warning("⚠ No department data available for selected filters.")
 # QUESTION ANALYSIS
 # ===============================
-st.subheader("❓ Question Analysis")
+st.subheader(" Question Analysis")
 
 question_accuracy = {}
 
@@ -261,32 +261,32 @@ st.pyplot(fig4)
 best_q = question_df["Accuracy"].idxmax()
 worst_q = question_df["Accuracy"].idxmin()
 
-st.write(f"✔ Easiest Question: {best_q}")
-st.write(f"⚠ Hardest Question: {worst_q}")
+st.write(f"Easiest Question: {best_q}")
+st.write(f"Hardest Question: {worst_q}")
 
 # ===============================
 # SMART INSIGHTS
 # ===============================
-st.subheader("🧠 Insights")
+st.subheader(" Insights")
 
 pass_rate = (df["RESULT"] == "Pass").mean() * 100
 st.write(f"Overall Pass Rate: {round(pass_rate,2)}%")
 
 # ===============================
-# ⚠ WEAK STUDENTS DETECTION (NEW)
+# WEAK STUDENTS DETECTION (NEW)
 # ===============================
-st.subheader("⚠ Students Needing Improvement")
+st.subheader("Students Needing Improvement")
 
 weak_students = df[df["SCORE"] < 3]
 
 if len(weak_students) > 0:
     st.dataframe(weak_students[["NAME", "DEPARTMENT", "SCORE"]])
 else:
-    st.success("No weak students 🎉")
+    st.success("No weak students ")
     # ===============================
 # RECOMMENDATION SYSTEM
 # ===============================
-st.subheader("🎯 Performance Recommendations")
+st.subheader(" Performance Recommendations")
 
 avg_score = df["SCORE"].mean()
 
@@ -302,7 +302,7 @@ else:
 # ===============================
 # AI PREDICTION
 # ===============================
-st.subheader("🤖 AI Prediction")
+st.subheader(" AI Prediction")
 
 st.dataframe(df[["NAME", "SCORE", "PREDICTED_SCORE", "PREDICTED_RESULT"]])
 
@@ -310,7 +310,7 @@ st.dataframe(df[["NAME", "SCORE", "PREDICTED_SCORE", "PREDICTED_RESULT"]])
 
 # FEATURE IMPORTANCE
 # ===============================
-st.subheader("📊 Feature Importance")
+st.subheader(" Feature Importance")
 
 if len(df) > 3:
 
@@ -328,9 +328,9 @@ else:
     st.info("Feature importance requires more filtered records.")
 
 # ===============================
-# 🔍 INDIVIDUAL STUDENT ANALYSIS
+#  INDIVIDUAL STUDENT ANALYSIS
 # ===============================
-st.subheader("🔍 Individual Student Analysis")
+st.subheader(" Individual Student Analysis")
 
 student_name = st.selectbox("Select Student", df["NAME"].unique())
 student_data = df[df["NAME"] == student_name]
@@ -344,7 +344,7 @@ st.write("Result:", student_data["RESULT"].values[0])
 # ===============================
 # TOP STUDENTS
 # ===============================
-st.subheader("🏆 Top Students")
+st.subheader(" Top Students")
 
 top_students = df.sort_values("SCORE", ascending=False).head(5)
 
@@ -357,7 +357,7 @@ else:
 # DOWNLOAD BUTTON
 # ===============================
 st.download_button(
-    label="📥 Download Results as CSV",
+    label=" Download Results as CSV",
     data=df.to_csv(index=False),
     file_name="mcq_results.csv",
     mime="text/csv"
@@ -366,5 +366,5 @@ st.download_button(
 # ===============================
 # FULL DATA
 # ===============================
-st.subheader("📋 Full Data")
+st.subheader(" Full Data")
 st.dataframe(df)
