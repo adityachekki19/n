@@ -1,16 +1,16 @@
-# 📊 MCQ Quiz Analytics
+#  MCQ Quiz Analytics
 
-## 📌 Overview
+##  Overview
 
 This project analyzes MCQ quiz responses and generates meaningful insights such as overall performance statistics, individual analysis, and visualizations.
 
 ---
 
-## 🚀 Features
+## Features
 
-* 📈 Overall quiz statistics (total, attempted, correct, incorrect)
-* 👤 Individual performance analysis
-* 📊 Visualizations:
+*  Overall quiz statistics (total, attempted, correct, incorrect)
+*  Individual performance analysis
+* Visualizations:
 
   * Bar charts
   * Pie charts
@@ -18,7 +18,7 @@ This project analyzes MCQ quiz responses and generates meaningful insights such 
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 * Python
 * Pandas
@@ -26,7 +26,7 @@ This project analyzes MCQ quiz responses and generates meaningful insights such 
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 MCQ_Quiz_Analytics/
 │── src/ → Source code
@@ -36,7 +36,7 @@ MCQ_Quiz_Analytics/
 
 ---
 
-## ▶️ How to Run
+##  How to Run
 
 1. Make sure Python is installed
 2. Install required libraries:
@@ -47,13 +47,13 @@ MCQ_Quiz_Analytics/
 
 ---
 
-## 📊 Output
+## Output
 
 * Displays quiz statistics
 * Generates graphs in the `graphs/` folder
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
-Navjot Kaur
+Pavan Kumar
